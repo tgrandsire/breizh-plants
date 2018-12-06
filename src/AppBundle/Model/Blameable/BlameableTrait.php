@@ -17,8 +17,6 @@ trait BlameableTrait
      * @Gedmo\Blameable(on="create")
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="created_by", referencedColumnName="id")
-     *
-     * @Groups({"game"})
      */
     protected $createdBy;
 
@@ -28,8 +26,6 @@ trait BlameableTrait
      * @Gedmo\Blameable(on="update")
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="updated_by", referencedColumnName="id")
-     *
-     * @Groups({"game"})
      */
     protected $updatedBy;
 

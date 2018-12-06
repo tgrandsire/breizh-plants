@@ -16,9 +16,6 @@ trait TimestampableTrait
      *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime")
-     *
-     * @Groups({"game"})
-     *
      */
     protected $createdAt;
 
@@ -27,8 +24,6 @@ trait TimestampableTrait
      *
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updated_at", type="datetime")
-     *
-     * @Groups({"game"})
      */
     protected $updatedAt;
 

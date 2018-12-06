@@ -1,3 +1,11 @@
+app_sort:
+    resource: "@AppBundle/Controller/TreeNursery/SortController.php"
+    type:     annotation
+
+app_variety:
+    resource: "@AppBundle/Controller/TreeNursery/VarietyController.php"
+    type:     annotation
+
 api:
     resource: '.'
     type: 'api_platform'

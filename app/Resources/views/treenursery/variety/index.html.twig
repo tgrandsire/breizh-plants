@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Varieties list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for variety in varieties %}
+            <tr>
+                <td><a href="{{ path('treenursery_varieties_show', { 'id': variety.id }) }}">{{ variety.id }}</a></td>
+                <td>{{ variety.name }}</td>
+                <td>{% if variety.deletedAt %}{{ variety.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('treenursery_varieties_show', { 'id': variety.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('treenursery_varieties_edit', { 'id': variety.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('treenursery_varieties_new') }}">Create a new variety</a>
+        </li>
+    </ul>
+{% endblock %}

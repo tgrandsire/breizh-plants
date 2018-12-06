@@ -5,9 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Entity trait
+ * Identity Entity
  */
-Trait EntityTrait
+Trait IdentityEntity
 {
 	/**
 	 * Id
@@ -18,7 +18,7 @@ Trait EntityTrait
 	 * @ORM\Column(name="id", type="integer")
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 *
-	 * @Groups({"game", "play", "turn"})
+	 * @Groups({"sort", "variety"})
 	 */
 	protected $id;
 

@@ -2,14 +2,15 @@
 namespace AppBundle\Model;
 
 /**
- * Entity interface
+ * Identity interface
  */
-interface EntityInterface
+interface IdentityInterface
 {
 	/**
 	 * Gets its id
 	 *
 	 * @return int
 	 */
-	public function getId(): int;
+	public function getId(): ?int;
 }
+

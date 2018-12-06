@@ -1,5 +1,6 @@
 <?php
-namespace AppBundle\Entity;
+
+namespace AppBundle\Entity\Security;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
@@ -11,10 +12,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * User
  *
- * ! CANNOT implements EntityInterface neither use EntityTrait !
+ * ! CANNOT implements IdntityInterface neither use IdentityEntity !
  *
  * @ORM\Entity
- * @ORM\Table(name="`user`")
+ * @ORM\Table(name="security_user")
  *
  * @ApiResource(
  *     attributes={
@@ -43,7 +44,7 @@ class User extends BaseUser
      * @Assert\NotBlank
      * @Assert\Length(min=3, minMessage="Your name must be at least 3 characters long", max=100, maxMessage="Your name must be at most 100 characters long")
      *
-     * @Groups({"user", "game"})
+     * @Groups({"user"})
      */
     protected $fullname;
 
