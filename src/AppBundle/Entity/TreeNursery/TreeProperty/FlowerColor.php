@@ -1,23 +1,23 @@
 <?php
 
-namespace AppBundle\Entity\TreeNursery;
+namespace AppBundle\Entity\TreeNursery\TreeProperty;
 
+use AppBundle\Model\SoftDeleteableEntity;
+use AppBundle\Model\{IdentityInterface, IdentityEntity};
+use AppBundle\Model\{NameableInterface, NameableEntity};
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
-
-use AppBundle\Model\{IdentityInterface, IdentityEntity, NameableInterface, NameableEntity};
-
 
 /**
- * Use
+ * FlowerColor
  *
- * @ORM\Table(name="tree_nursery_usage")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TreeNursery\UsageRepository")
+ * @ORM\Table(name="tree_nursery_tree_property_flower_color")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TreeNursery\TreeProperty\FlowerColorRepository")
  *
  * @Gedmo\SoftDeleteable(fieldName="deleted_at", timeAware=true)
  */
-class Usage implements
+class FlowerColor implements
     IdentityInterface,
     NameableInterface
 {
@@ -28,9 +28,9 @@ class Usage implements
     /**
      * Varieties
      *
-     * @var Iterable<Variety>
+     * @var Collection<Variety>
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TreeNursery\Variety", mappedBy="usages")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TreeNursery\Variety", mappedBy="flowerColors")
      */
     protected $varieties;
 
@@ -39,7 +39,7 @@ class Usage implements
      */
     public function __construct()
     {
-        $this->varieties = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->varieties = new ArrayCollection();
     }
 
     /**
@@ -47,11 +47,14 @@ class Usage implements
      *
      * @param \AppBundle\Entity\TreeNursery\Variety $variety
      *
-     * @return Usage
+     * @return FlowerColor
      */
     public function addVariety(\AppBundle\Entity\TreeNursery\Variety $variety): self
     {
-        $this->varieties[] = $variety;
+        if (! $this->varieties->contains($variety)) {
+            $variety->addFlowerColor($this);
+            $this->varieties->add($variety);
+        }
 
         return $this;
     }

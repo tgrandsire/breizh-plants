@@ -1,20 +1,23 @@
 <?php
 
-namespace AppBundle\Entity\TreeNursery;
+namespace AppBundle\Entity\TreeNursery\TreeProperty;
 
+use ApiPlatform\Core\Annotation\{ApiResource, ApiSubresource};
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use AppBundle\Model\SoftDeleteableEntity;
 
 use AppBundle\Model\{IdentityInterface, IdentityEntity, NameableInterface, NameableEntity};
 
 /**
- * TreeKind
+ * TreeKind (arbre d'ornement, plante de terre de bruyère)
  *
- * @ORM\Table(name="tree_nursery_tree_kind")
+ * @ORM\Table(name="tree_nursery_tree_property_tree_kind")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TreeNursery\TreeKindRepository")
  *
  * @Gedmo\SoftDeleteable(fieldName="deleted_at", timeAware=true)
+ *
+ * @ApiResource
  */
 class TreeKind implements
     IdentityInterface,

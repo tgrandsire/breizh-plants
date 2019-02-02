@@ -13,8 +13,10 @@ class VarietyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('deletedAt')->add('sort');
-    }/**
+        $builder->add('name')->add('sort')->add('usages')->add('flowerColors');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -31,6 +33,4 @@ class VarietyType extends AbstractType
     {
         return 'appbundle_treenursery_variety';
     }
-
-
 }

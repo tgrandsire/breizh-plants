@@ -3,17 +3,17 @@
 namespace AppBundle\Entity\TreeNursery;
 
 use ApiPlatform\Core\Annotation\{ApiResource, ApiSubresource};
+use AppBundle\Model\SoftDeleteableEntity;
+use AppBundle\Model\{IdentityInterface, IdentityEntity};
+use AppBundle\Model\{NameableInterface, NameableEntity};
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
-
-use AppBundle\Model\{IdentityInterface, IdentityEntity, NameableInterface, NameableEntity};
 
 /**
- * Sort
+ * Sort (Species as Abelia, Rosmarinus)
  *
  * @ORM\Table(name="tree_nursery_sort")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\SortRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TreeNursery\SortRepository")
  *
  * @Gedmo\SoftDeleteable(fieldName="deleted_at", timeAware=true)
  *
@@ -43,12 +43,14 @@ class Sort implements
      *
      * @var Iterable<TreeKind>
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TreeNursery\TreeKind", inversedBy="sorts")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TreeNursery\TreeProperty\TreeKind", inversedBy="sorts")
      * @ORM\JoinTable(
      *     name="tree_nursery_sorts_tree_kinds",
      *     joinColumns={@ORM\JoinColumn(name="sort_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="tree_kind_id", referencedColumnName="id")}
      * )
+     *
+     * @ApiSubresource()
      */
     protected $treeKinds;
 
@@ -103,11 +105,11 @@ class Sort implements
     /**
      * Add treeKind.
      *
-     * @param \AppBundle\Entity\TreeNursery\TreeKind $treeKind
+     * @param \AppBundle\Entity\TreeNursery\TreeProperty\TreeKind $treeKind
      *
      * @return Sort
      */
-    public function addTreeKind(\AppBundle\Entity\TreeNursery\TreeKind $treeKind): self
+    public function addTreeKind(\AppBundle\Entity\TreeNursery\TreeProperty\TreeKind $treeKind): self
     {
         if (! $this->treeKinds->contains($treeKind)) {
             $treeKind->addSort($this);
@@ -120,11 +122,11 @@ class Sort implements
     /**
      * Remove treeKind.
      *
-     * @param \AppBundle\Entity\TreeNursery\TreeKind $treeKind
+     * @param \AppBundle\Entity\TreeNursery\TreeProperty\TreeKind $treeKind
      *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeTreeKind(\AppBundle\Entity\TreeNursery\TreeKind $treeKind): bool
+    public function removeTreeKind(\AppBundle\Entity\TreeNursery\TreeProperty\TreeKind $treeKind): bool
     {
         return $this->treeKinds->removeElement($treeKind);
     }

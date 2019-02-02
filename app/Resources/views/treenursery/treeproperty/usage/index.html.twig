@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Usages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usage in usages %}
+            <tr>
+                <td><a href="{{ path('treenursery_usages_show', { 'id': usage.id }) }}">{{ usage.id }}</a></td>
+                <td>{{ usage.name }}</td>
+                <td>{% if usage.deletedAt %}{{ usage.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('treenursery_usages_show', { 'id': usage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('treenursery_usages_edit', { 'id': usage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('treenursery_usages_new') }}">Create a new usage</a>
+        </li>
+    </ul>
+{% endblock %}

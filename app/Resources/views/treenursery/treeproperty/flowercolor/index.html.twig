@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Flowercolors list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for flowerColor in flowerColors %}
+            <tr>
+                <td><a href="{{ path('treenursery_flower-colors_show', { 'id': flowerColor.id }) }}">{{ flowerColor.id }}</a></td>
+                <td>{{ flowerColor.name }}</td>
+                <td>{% if flowerColor.deletedAt %}{{ flowerColor.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('treenursery_flower-colors_show', { 'id': flowerColor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('treenursery_flower-colors_edit', { 'id': flowerColor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('treenursery_flower-colors_new') }}">Create a new flowerColor</a>
+        </li>
+    </ul>
+{% endblock %}

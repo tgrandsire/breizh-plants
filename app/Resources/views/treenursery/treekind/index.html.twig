@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Treekinds list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for treeKind in treeKinds %}
+            <tr>
+                <td><a href="{{ path('treenursery_treekind_show', { 'id': treeKind.id }) }}">{{ treeKind.id }}</a></td>
+                <td>{{ treeKind.name }}</td>
+                <td>{% if treeKind.deletedAt %}{{ treeKind.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('treenursery_treekind_show', { 'id': treeKind.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('treenursery_treekind_edit', { 'id': treeKind.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('treenursery_treekind_new') }}">Create a new treeKind</a>
+        </li>
+    </ul>
+{% endblock %}

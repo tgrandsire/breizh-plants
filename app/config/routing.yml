@@ -6,6 +6,18 @@ app_variety:
     resource: "@AppBundle/Controller/TreeNursery/VarietyController.php"
     type:     annotation
 
+app_usage:
+    resource: "@AppBundle/Controller/TreeNursery/TreeProperty/UsageController.php"
+    type:     annotation
+
+app_tree_kind:
+    resource: "@AppBundle/Controller/TreeNursery/TreeProperty/TreeKindController.php"
+    type:     annotation
+
+app_flower_color:
+    resource: "@AppBundle/Controller/TreeNursery/TreeProperty/FlowerColorController.php"
+    type:     annotation
+
 api:
     resource: '.'
     type: 'api_platform'

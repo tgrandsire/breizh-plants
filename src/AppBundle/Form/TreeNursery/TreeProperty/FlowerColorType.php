@@ -1,28 +1,26 @@
 <?php
 
-namespace AppBundle\Form\TreeNursery;
+namespace AppBundle\Form\TreeNursery\TreeProperty;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SortType extends AbstractType
+class FlowerColorType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('treekinds');
-    }
-
-    /**
+        $builder->add('name');
+    }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\TreeNursery\Sort'
+            'data_class' => 'AppBundle\Entity\TreeNursery\TreeProperty\FlowerColor'
         ));
     }
 
@@ -31,6 +29,8 @@ class SortType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_treenursery_sort';
+        return 'appbundle_treenursery_treeproperty_flowercolor';
     }
+
+
 }
