@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form\TreeNursery\TreeProperty;
 
+use AppBundle\Entity\TreeNursery\TreeProperty\TreeKind;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +23,7 @@ class TreeKindType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\TreeNursery\TreeProperty\TreeKind'
+            'data_class' => TreeKind::class,
         ));
     }
 
